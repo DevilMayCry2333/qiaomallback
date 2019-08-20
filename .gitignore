@@ -1,6 +1,15 @@
 # Compiled class file
 *.class
 
+*.jks
+
+.idea/
+target/
+out/
+
+.DS_Store
+
+
 # Log file
 *.log
 
