@@ -4,11 +4,11 @@ import com.example.qiaomallback.dao.pms_productEntityMapper;
 import com.example.qiaomallback.entity.pms_productEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Set;
 
 @Service
-public class GoodsDetailSer {
+public class GoodsSer {
 
     @Autowired
     pms_productEntityMapper productEntityMapper;
@@ -18,6 +18,10 @@ public class GoodsDetailSer {
         System.out.println(productEntityMapper.selectByPrimaryKey(Long.parseLong(id)).getName());
 
         return productEntityMapper.selectByPrimaryKey(Long.parseLong(id));
+    }
+
+    public ArrayList<pms_productEntity> AllGoods(){
+        return productEntityMapper.selectPmsProduct();
     }
 
 }

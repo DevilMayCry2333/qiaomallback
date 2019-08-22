@@ -38,6 +38,6 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- tableName是数据库的表名，domainObjectName是生成的实体类名称 -->
-        <table tableName="pms_product" domainObjectName="pms_productEntity" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="oms_order" domainObjectName="oms_orderEntity" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>
 </generatorConfiguration>
