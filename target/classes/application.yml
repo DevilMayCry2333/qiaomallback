@@ -5,7 +5,14 @@ spring:
     password: YKY12345..
     driver-class-name: com.mysql.jdbc.Driver
 mybatis:
-  type-aliases-package: com.example.paiban.entity
+  type-aliases-package: com.example.qiaomallback.entity
+  mapperLocations: classpath*:mapper/*.xml
+mapper:
+    plugin: tk.mybatis.mapper.generator.MapperPlugin
+    Mapper: tk.mybatis.mapper.common.Mapper
+    not-empty: false
+    identity: MYSQL
+
 
 server:
   port: 5000
@@ -15,4 +22,5 @@ server:
 #    key-password: 123456
 #    key-store-type: jks
 #    key-alias: 1
+
 
