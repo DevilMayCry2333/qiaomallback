@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/EleSale
     username: root
-    password: YKY12345..
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
 mybatis:
   type-aliases-package: com.example.paiban.entity
