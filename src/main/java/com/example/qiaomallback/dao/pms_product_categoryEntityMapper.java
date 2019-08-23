@@ -1,11 +1,9 @@
 package com.example.qiaomallback.dao;
 
 import com.example.qiaomallback.entity.pms_product_categoryEntity;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.ArrayList;
 @Repository
 //商品信息
 public interface pms_product_categoryEntityMapper {
@@ -22,7 +20,7 @@ public interface pms_product_categoryEntityMapper {
     int updateByPrimaryKeyWithBLOBs(pms_product_categoryEntity record);
 
     int updateByPrimaryKey(pms_product_categoryEntity record);
-    @Select("Select * from pms_product_category")
-    List<pms_product_categoryEntity> pmsselect();
+
+    ArrayList<pms_product_categoryEntity> pmsselect();
 
 }
