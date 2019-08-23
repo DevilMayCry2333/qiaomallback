@@ -14,5 +14,8 @@ public class pms_product_service {
     public List<pms_product_categoryEntity> getlist(){
         return pms.pmsselect();
     }
+    public int insert(pms_product_categoryEntity pms_product_categoryEntity){
+        return pms.insert(pms_product_categoryEntity);
+    }
 
 }

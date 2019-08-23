@@ -1,19 +1,17 @@
 package com.example.qiaomallback.controller;
 
 import com.example.qiaomallback.entity.pms_productEntity;
+import com.example.qiaomallback.entity.pms_product_categoryEntity;
 import com.example.qiaomallback.service.GoodsSer;
+import com.example.qiaomallback.service.pms_product_service;
+import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @CrossOrigin(value = "*")
@@ -58,6 +56,20 @@ public class GoodsCtl {
 
         return jsonObject;
 
+    }
+    pms_product_service pms_product_service;
+    public JSONObject add(@RequestBody pms_product_categoryEntity pms_product_categoryEntity) {
+        Map<String, Object> modelMap = new HashMap<>();
+        JSONObject json=new JSONObject();
+        int add = pms_product_service.insert(pms_product_categoryEntity);
+        if (add > 0) {
+            json.put("success", true);
+
+        } else {
+            json.put("success", false);
+            json.put("errMsg", "添加失败");
+        }
+        return json;
     }
 
 

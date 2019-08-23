@@ -1,11 +1,13 @@
 package com.example.qiaomallback.dao;
 
 import com.example.qiaomallback.entity.pms_product_categoryEntity;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
+//商品信息
 public interface pms_product_categoryEntityMapper {
     int deleteByPrimaryKey(Long id);
 
