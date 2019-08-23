@@ -21,6 +21,9 @@ public class GoodsCtl {
     GoodsSer goodsSer;
     JSONObject jsonObject = new JSONObject();
 
+    @Autowired
+    pms_product_service pms_product_service;
+
 
     @RequestMapping("/showGoodsDetail")
     public Object showGoodsDetail(@RequestParam("goodsId") String goodsId){
@@ -57,7 +60,8 @@ public class GoodsCtl {
         return jsonObject;
 
     }
-    pms_product_service pms_product_service;
+
+
     public JSONObject add(@RequestBody pms_product_categoryEntity pms_product_categoryEntity) {
         Map<String, Object> modelMap = new HashMap<>();
         JSONObject json=new JSONObject();
