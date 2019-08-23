@@ -13,6 +13,12 @@ mapper:
     not-empty: false
     identity: MYSQL
 
+logging:
+  level:
+    com:
+      example:
+        qiaomallback:
+          dao: debug
 
 server:
   port: 5000
