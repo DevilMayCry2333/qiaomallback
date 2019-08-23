@@ -14,4 +14,14 @@ public class OrderSer {
     public ArrayList<oms_orderEntity> selectAllOrder(){
         return orderEntityMapper.selectAll();
     }
+
+    public int delOrder(Long id){
+        oms_orderEntity omsOrderEntity = new oms_orderEntity();
+        omsOrderEntity.setId(id);
+        omsOrderEntity.setDeleteStatus(1);
+        return orderEntityMapper.updateByPrimaryKeySelective(omsOrderEntity);
+
+
+    }
+
 }
