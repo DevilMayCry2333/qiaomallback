@@ -3,22 +3,24 @@ package com.example.qiaomallback.controller;
 import com.example.qiaomallback.entity.User;
 import com.example.qiaomallback.service.userService;
 import com.example.qiaomallback.service.userServiceImp;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Controller
+@RestController
 public class registerCtl {
     @Autowired
     userServiceImp userServiceImp;
     userService userService;
-    @PostMapping("/reg")
-    public Map<String, Object> reg(@RequestParam String username, String password) {
-        Map<String, Object> modelMap = new HashMap<>();
+    @RequestMapping("/reg")
+    public JSONObject reg(@RequestParam String username, String password) {
+        JSONObject modelMap = new JSONObject();
+
         if (!"".equals(username) && !"".equals(password)) {
             User user = new User();
             user.setUsername(username);
@@ -37,5 +39,6 @@ public class registerCtl {
         }
         return modelMap;
     }
+
 
 }

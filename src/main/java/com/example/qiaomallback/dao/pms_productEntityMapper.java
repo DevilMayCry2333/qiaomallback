@@ -3,8 +3,12 @@ package com.example.qiaomallback.dao;
 import com.example.qiaomallback.entity.pms_productEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+
 @Repository
 public interface pms_productEntityMapper {
+
+    ArrayList<pms_productEntity> selectPmsProduct();
 
     int deleteByPrimaryKey(Long id);
 
