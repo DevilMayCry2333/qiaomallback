@@ -1,11 +1,24 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/EleSale
+    url: jdbc:mysql://127.0.0.1:3306/EleSale?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
-    password: YKY12345..
+    password: root
     driver-class-name: com.mysql.jdbc.Driver
 mybatis:
-  type-aliases-package: com.example.paiban.entity
+  type-aliases-package: com.example.qiaomallback.entity
+  mapperLocations: classpath*:mapper/*.xml
+mapper:
+    plugin: tk.mybatis.mapper.generator.MapperPlugin
+    Mapper: tk.mybatis.mapper.common.Mapper
+    not-empty: false
+    identity: MYSQL
+
+logging:
+  level:
+    com:
+      example:
+        qiaomallback:
+          dao: debug
 
 server:
   port: 5000
@@ -15,4 +28,5 @@ server:
 #    key-password: 123456
 #    key-store-type: jks
 #    key-alias: 1
+
 
