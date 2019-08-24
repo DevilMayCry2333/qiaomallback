@@ -14,7 +14,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/EleSale"
                         userId="root"
-                        password="123456">
+                        password="YKY12345..">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -38,6 +38,6 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- tableName是数据库的表名，domainObjectName是生成的实体类名称 -->
-        <table tableName="pms_product_attribute" domainObjectName="pms_product_attributeEntity" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="oms_order_item" domainObjectName="oms_order_itemEntity" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>
 </generatorConfiguration>
