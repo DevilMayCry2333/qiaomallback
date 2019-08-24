@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/EleSale
+    url: jdbc:mysql://127.0.0.1:3306/EleSale?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
-    password: YKY12345..
+    password: root
     driver-class-name: com.mysql.jdbc.Driver
 mybatis:
   type-aliases-package: com.example.qiaomallback.entity
