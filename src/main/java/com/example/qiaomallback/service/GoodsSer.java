@@ -37,5 +37,8 @@ public class GoodsSer {
             flag = true;
         return flag;
     }
+    public int insert(pms_product_categoryEntity pms_product_categoryEntity){
+        return pmsProductCategoryEntityMapper.insert(pms_product_categoryEntity);
+    }
 
 }
