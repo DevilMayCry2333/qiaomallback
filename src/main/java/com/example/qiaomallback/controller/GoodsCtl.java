@@ -76,5 +76,30 @@ public class GoodsCtl {
         return json;
     }
 
+    @RequestMapping("/EditGoods")
+    JSONObject edit(@RequestParam String id,@RequestParam String name,@RequestParam String parent_id,@RequestParam String level,@RequestParam String product_count,@RequestParam String product_unit,@RequestParam String nav_status,@RequestParam String show_status,@RequestParam String sort,@RequestParam String icon,@RequestParam String keywords,@RequestParam String description){
+        JSONObject json = new JSONObject();
+        pms_product_categoryEntity pmsProductEntity = new pms_product_categoryEntity();
+        pmsProductEntity.setId(Long.valueOf(id));
+        pmsProductEntity.setName(name);
+        pmsProductEntity.setParentId(Long.valueOf(parent_id));
+        pmsProductEntity.setLevel(Integer.valueOf(level));
+        pmsProductEntity.setProductCount(Integer.valueOf(product_count));
+        pmsProductEntity.setProductUnit(product_unit);
+        pmsProductEntity.setNavStatus(Integer.valueOf(nav_status));
+        pmsProductEntity.setShowStatus(Integer.valueOf((show_status)));
+        pmsProductEntity.setSort(Integer.valueOf(sort));
+        pmsProductEntity.setIcon(icon);
+        pmsProductEntity.setKeywords(keywords);
+        pmsProductEntity.setDescription(description);
+        if(goodsSer.EditGoods(pmsProductEntity) == true){
+            json.put("success",true);
+        }else {
+            json.put("success",false);
+            json.put("errMsg","添加失败");
+        }
+        return  json;
+    }
+
 
 }
