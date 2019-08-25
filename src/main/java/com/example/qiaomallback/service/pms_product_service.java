@@ -18,5 +18,5 @@ public class pms_product_service {
         return pms.insert(pms_product_categoryEntity);
     }
 
-
 }
+

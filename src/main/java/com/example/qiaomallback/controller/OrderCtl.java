@@ -31,12 +31,22 @@ public class OrderCtl {
         jsonArray.add(orderSer.OrderBasicDetail(id));
         return jsonArray;
     }
-
-    @RequestMapping("/Order/OrderItemById")
-    public Object OrderItemById(@RequestParam String id){
-        return orderSer.orderItemById(Long.valueOf(id));
+    @RequestMapping("/SearchByUserName")
+    public Object OrderItemByUserName(@RequestParam String memberUsername){
+        return orderSer.searchByUserName(memberUsername);
     }
-
+    @RequestMapping("/SearchById")
+    public Object OrderItemById(@RequestParam Long id){
+        return orderSer.searchById(id);
+    }
+    @RequestMapping("/SearchByTime")
+    public Object OrderItemByTime(@RequestParam String time){
+        return orderSer.searchByTime(time);
+    }
+    @RequestMapping("/SearchBySn")
+    public Object OrderItemBySn(@RequestParam String sn){
+        return orderSer.searchBySn(sn);
+    }
     @RequestMapping("/delOrder")
     public Object DelOrder(@RequestParam String id){
         JSONObject jsonObject = new JSONObject();
