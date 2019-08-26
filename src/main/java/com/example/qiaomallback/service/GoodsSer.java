@@ -31,14 +31,19 @@ public class GoodsSer {
         return productEntityMapper.selectPmsProduct();
     }
 
-    public boolean EditGoods(pms_product_categoryEntity goodes){
+    public boolean EditGoods(pms_productEntity goodes){
         boolean flag =false;
-        if(pmsProductCategoryEntityMapper.updateByPrimaryKeySelective(goodes) >  0)
+        if(productEntityMapper.updateByPrimaryKeySelective(goodes) >  0)
             flag = true;
         return flag;
     }
     public int insert(pms_product_categoryEntity pms_product_categoryEntity){
         return pmsProductCategoryEntityMapper.insert(pms_product_categoryEntity);
+    }
+
+    public pms_product_categoryEntity ShowCateById(String id){
+
+        return pmsProductCategoryEntityMapper.selectByPrimaryKey(Long.valueOf(id));
     }
 
 }
