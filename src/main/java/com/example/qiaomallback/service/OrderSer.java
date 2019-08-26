@@ -25,7 +25,22 @@ public class OrderSer {
         }
         return omsOrderEntities;
     }
-
+    public ArrayList<oms_orderEntity> searchByUserName(String memberUsername){
+        ArrayList<oms_orderEntity> omsOrderEntities =orderEntityMapper.searchByUserName(memberUsername);
+        return omsOrderEntities;
+    }
+    public ArrayList<oms_orderEntity> searchById(Long id){
+        ArrayList<oms_orderEntity> omsOrderEntities =orderEntityMapper.searchById(id);
+        return omsOrderEntities;
+    }
+    public ArrayList<oms_orderEntity> searchBySn(String sn){
+        ArrayList<oms_orderEntity> omsOrderEntities =orderEntityMapper.searchBySn(sn);
+        return omsOrderEntities;
+    }
+    public ArrayList<oms_orderEntity> searchByTime(String time){
+        ArrayList<oms_orderEntity> omsOrderEntities =orderEntityMapper.searchByTime(time);
+        return omsOrderEntities;
+    }
     public int delOrder(Long id){
         oms_orderEntity omsOrderEntity = new oms_orderEntity();
         omsOrderEntity.setId(id);
