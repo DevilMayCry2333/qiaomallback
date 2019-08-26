@@ -46,4 +46,7 @@ public class GoodsSer {
         return pmsProductCategoryEntityMapper.selectByPrimaryKey(Long.valueOf(id));
     }
 
+    public int delCate(String id){
+        return pmsProductCategoryEntityMapper.deleteByPrimaryKey(Long.valueOf(id));
+    }
 }

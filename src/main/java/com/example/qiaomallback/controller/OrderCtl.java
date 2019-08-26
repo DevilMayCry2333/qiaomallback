@@ -43,7 +43,8 @@ public class OrderCtl {
     public Object OrderItemByTime(@RequestParam String time){
         return orderSer.searchByTime(time);
     }
-    @RequestMapping("/SearchBySn")
+    @RequestMapping("/SearchOrderBySn")
+
     public Object OrderItemBySn(@RequestParam String sn){
         return orderSer.searchBySn(sn);
     }
