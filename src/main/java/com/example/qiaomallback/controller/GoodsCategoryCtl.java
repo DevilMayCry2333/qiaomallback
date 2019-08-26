@@ -16,6 +16,7 @@ public class GoodsCategoryCtl {
     @Autowired
     pms_product_service pmsProductService;
     JSONObject json=new JSONObject();
+
     @RequestMapping("/goodsCategory")
     public JSONObject pms_product_categoryCtl(){
         JSONArray array=JSONArray.fromObject(pmsProductService.getlist());

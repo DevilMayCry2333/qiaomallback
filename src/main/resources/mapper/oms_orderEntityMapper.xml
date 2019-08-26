@@ -64,6 +64,48 @@
     from oms_order
     where id = #{id,jdbcType=BIGINT}
   </select>
+
+  <select id="searchByUserName" resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List" />
+  from oms_order
+    <trim prefix="where" prefixOverrides="and | or">
+      <if test="memberUsername != null and memberUsername != ''">
+        member_username Like CONCAT('%',#{memberUsername},'%')
+      </if>
+    </trim>
+</select>
+  <select id="searchById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from oms_order
+    <trim prefix="where" prefixOverrides="and | or">
+      <if test="id != null and id != ''">
+        id = #{id}
+      </if>
+    </trim>
+  </select>
+  <select id="searchByTime" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from oms_order
+    <trim prefix="where" prefixOverrides="and | or">
+      <if test="time != null and time != ''">
+        payment_time Like CONCAT('%',#{time},'%')
+      </if>
+    </trim>
+  </select>
+  <select id="searchBySn" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from oms_order
+    <trim prefix="where" prefixOverrides="and | or">
+      <if test="sn != null and sn != ''">
+        order_sn Like CONCAT('%',#{sn},'%')
+      </if>
+    </trim>
+  </select>
+
     <select id="selectAll" resultMap="BaseResultMap">
       select
         <include refid="Base_Column_List"></include>
@@ -91,8 +133,8 @@
       use_integration, payment_time, delivery_time, 
       receive_time, comment_time, modify_time
       )
-    values (#{id,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, #{couponId,jdbcType=BIGINT}, 
-      #{orderSn,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{memberUsername,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, #{couponId,jdbcType=BIGINT},
+      #{orderSn,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{memberUsername,jdbcType=VARCHAR},
       #{totalAmount,jdbcType=DECIMAL}, #{payAmount,jdbcType=DECIMAL}, #{freightAmount,jdbcType=DECIMAL}, 
       #{promotionAmount,jdbcType=DECIMAL}, #{integrationAmount,jdbcType=DECIMAL}, #{couponAmount,jdbcType=DECIMAL}, 
       #{discountAmount,jdbcType=DECIMAL}, #{payType,jdbcType=INTEGER}, #{sourceType,jdbcType=INTEGER}, 
