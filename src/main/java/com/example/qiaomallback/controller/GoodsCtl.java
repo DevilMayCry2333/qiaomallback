@@ -4,13 +4,13 @@ import com.example.qiaomallback.entity.pms_productEntity;
 import com.example.qiaomallback.entity.pms_product_categoryEntity;
 import com.example.qiaomallback.service.GoodsSer;
 import com.example.qiaomallback.service.pms_product_service;
-import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @RestController
@@ -28,16 +28,12 @@ public class GoodsCtl {
     @RequestMapping("/showGoodsDetail")
     public Object showGoodsDetail(@RequestParam("goodsId") String goodsId){
 
-        jsonObject.put("Res",true);
         System.out.println(goodsSer.goodsDetail(goodsId));
         pms_productEntity pmsEty = goodsSer.goodsDetail(goodsId);
 
         System.out.println(pmsEty);
 
-        JSONArray jsonArray = new JSONArray();
-        jsonArray.add(pmsEty);
 
-        jsonObject.put("tableData",jsonArray);
 
 
 //        JSONObject goodsDetail = JSONObject.fromObject(pmsEty);
@@ -45,7 +41,7 @@ public class GoodsCtl {
 
 //        jsonObject.put("goodInfo",goodsDetail);
 
-        return jsonObject;
+        return pmsEty;
 
     }
 
@@ -80,8 +76,9 @@ public class GoodsCtl {
         pmsProductEntity.setKeywords(keywords);
         pmsProductEntity.setDescription(description);
         int add = goodsSer.insert(pmsProductEntity);
+
         if (add > 0) {
-            json.put("success", true);
+            json.put("Res", true);
 
         } else {
             json.put("success", false);
@@ -91,25 +88,26 @@ public class GoodsCtl {
     }
 
     @RequestMapping("/EditGoods")
-    JSONObject edit(@RequestParam String id,@RequestParam String name,@RequestParam String parent_id,@RequestParam String level,@RequestParam String product_count,@RequestParam String product_unit,@RequestParam String nav_status,@RequestParam String show_status,@RequestParam String sort,@RequestParam String icon,@RequestParam String keywords,@RequestParam String description){
+    JSONObject edit(@RequestParam String id, @RequestParam String brandName, @RequestParam String detailDesc,@RequestParam String desc, @RequestParam String productSn, @RequestParam BigDecimal price, @RequestParam BigDecimal originalPrice, @RequestParam String stock, @RequestParam String unit, @RequestParam BigDecimal weight, @RequestParam String sort){
         JSONObject json = new JSONObject();
-        pms_product_categoryEntity pmsProductEntity = new pms_product_categoryEntity();
+        pms_productEntity pmsProductEntity = new pms_productEntity();
+
         pmsProductEntity.setId(Long.valueOf(id));
-        pmsProductEntity.setName(name);
-        pmsProductEntity.setParentId(Long.valueOf(parent_id));
-        pmsProductEntity.setLevel(Integer.valueOf(level));
-        pmsProductEntity.setProductCount(Integer.valueOf(product_count));
-        pmsProductEntity.setProductUnit(product_unit);
-        pmsProductEntity.setNavStatus(Integer.valueOf(nav_status));
-        pmsProductEntity.setShowStatus(Integer.valueOf((show_status)));
+        pmsProductEntity.setBrandName(brandName);
+        pmsProductEntity.setDetailDesc(detailDesc);
+        pmsProductEntity.setDescription(desc);
+        pmsProductEntity.setProductSn(productSn);
+        pmsProductEntity.setPrice(price);
+        pmsProductEntity.setOriginalPrice(originalPrice);
+        pmsProductEntity.setStock(Integer.valueOf(stock));
+        pmsProductEntity.setUnit(unit);
+        pmsProductEntity.setWeight(weight);
         pmsProductEntity.setSort(Integer.valueOf(sort));
-        pmsProductEntity.setIcon(icon);
-        pmsProductEntity.setKeywords(keywords);
-        pmsProductEntity.setDescription(description);
+
         if(goodsSer.EditGoods(pmsProductEntity) == true){
-            json.put("success",true);
+            json.put("Res",true);
         }else {
-            json.put("success",false);
+            json.put("Res",false);
             json.put("errMsg","添加失败");
         }
         return  json;
