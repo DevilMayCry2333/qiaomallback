@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(value = "*")
+
 public class OrderCtl {
     @Autowired
     OrderSer orderSer;
@@ -24,6 +25,12 @@ public class OrderCtl {
         return jsonObject;
 //        return orderSer.selectAllOrder();
     }
+
+    @RequestMapping("/Order/OrderItemById")
+    public Object OrderItemById(@RequestParam String id){
+        return orderSer.orderItemById(Long.valueOf(id));
+    }
+
 
     @RequestMapping("/Order/OrderBasicDetail")
     public Object OrderBasicDetail(@RequestParam String id){
