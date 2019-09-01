@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserDao {
-    @Select("SELECT * FROM regUser WHERE username= #{username} AND password= #{password}")
-    User login(@Param("username") String username, @Param("password") String password);
+
 
 //    int add(User user);
 }

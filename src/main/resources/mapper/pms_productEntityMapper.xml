@@ -110,12 +110,15 @@
   </select>
   <select id="selectPmsProduct" resultMap="ResultMapWithBLOBs">
         select
-        <include refid="Base_Column_List" />
-        ,
-        <include refid="Blob_Column_List" />
+        *
          from pms_product
 
   </select>
+
+  <select id="selectByName" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+    select * from pms_product where pms_product.name = #{name}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from pms_product
     where id = #{id,jdbcType=BIGINT}

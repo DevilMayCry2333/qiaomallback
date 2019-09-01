@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.qiaomallback.dao.regUserEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.example.qiaomallback.entity.regUserEntity" >
+    <constructor >
+      <arg column="uid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Province" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="isLock" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Tel" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="City" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="County" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Detail" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.example.qiaomallback.entity.regUserEntity" >
+    insert into regUser (uid, username, password, 
+      Province, isLock, Tel, 
+      City, County, Detail
+      )
+    values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{islock,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.qiaomallback.entity.regUserEntity" >
+    insert into regUser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="province != null" >
+        Province,
+      </if>
+      <if test="islock != null" >
+        isLock,
+      </if>
+      <if test="tel != null" >
+        Tel,
+      </if>
+      <if test="city != null" >
+        City,
+      </if>
+      <if test="county != null" >
+        County,
+      </if>
+      <if test="detail != null" >
+        Detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="islock != null" >
+        #{islock,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

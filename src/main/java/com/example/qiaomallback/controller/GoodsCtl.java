@@ -45,6 +45,13 @@ public class GoodsCtl {
 
     }
 
+
+    @RequestMapping("/goodsDetailByName")
+    public Object goodsDetailByName(@RequestParam("name") String name){
+        return goodsSer.goodsDetailByName(name);
+
+    }
+
     @RequestMapping("/AllGoods")
     public Object showAllGoods(){
         JSONArray jsonArray = new JSONArray();
