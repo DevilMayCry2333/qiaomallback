@@ -8,6 +8,8 @@ import java.util.ArrayList;
 @Repository
 public interface pms_productEntityMapper {
 
+    pms_productEntity selectByName(String name);
+
     ArrayList<pms_productEntity> selectPmsProduct();
 
     int deleteByPrimaryKey(Long id);

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.qiaomallback.dao.testEntityMapper">
+  <resultMap id="BaseResultMap" type="com.example.qiaomallback.entity.testEntity">
+    <constructor>
+      <arg column="id1" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="id2" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pic" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="input_list" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="input_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="name2" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.example.qiaomallback.entity.testEntity">
+    insert into test (id1, id2, name, 
+      pic, input_list, input_type, 
+      name2)
+    values (#{id1,jdbcType=BIGINT}, #{id2,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{pic,jdbcType=VARCHAR}, #{inputList,jdbcType=VARCHAR}, #{inputType,jdbcType=INTEGER}, 
+      #{name2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.qiaomallback.entity.testEntity">
+    insert into test
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id1 != null">
+        id1,
+      </if>
+      <if test="id2 != null">
+        id2,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="pic != null">
+        pic,
+      </if>
+      <if test="inputList != null">
+        input_list,
+      </if>
+      <if test="inputType != null">
+        input_type,
+      </if>
+      <if test="name2 != null">
+        name2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id1 != null">
+        #{id1,jdbcType=BIGINT},
+      </if>
+      <if test="id2 != null">
+        #{id2,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="inputList != null">
+        #{inputList,jdbcType=VARCHAR},
+      </if>
+      <if test="inputType != null">
+        #{inputType,jdbcType=INTEGER},
+      </if>
+      <if test="name2 != null">
+        #{name2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select * from test where test.name = #{name};
+  </select>
+</mapper>

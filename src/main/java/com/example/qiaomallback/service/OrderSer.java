@@ -25,6 +25,13 @@ public class OrderSer {
         }
         return omsOrderEntities;
     }
+
+    public int insertOrder(oms_orderEntity omsOrderEntity,oms_order_itemEntity omsOrderItemEntity){
+        orderEntityMapper.insertSelective(omsOrderEntity);
+        omsOrderItemEntityMapper.insertSelective(omsOrderItemEntity);
+        return 1;
+    }
+
     public ArrayList<oms_orderEntity> searchByUserName(String memberUsername){
         ArrayList<oms_orderEntity> omsOrderEntities =orderEntityMapper.searchByUserName(memberUsername);
         return omsOrderEntities;

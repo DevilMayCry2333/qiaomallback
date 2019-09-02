@@ -23,10 +23,10 @@ logging:
 server:
   port: 5000
 
-#  ssl:
-#    key-store: classpath:youkaiyu.com.jks
-#    key-password: 123456
-#    key-store-type: jks
-#    key-alias: 1
+  ssl:
+    key-store: classpath:youkaiyu.com.jks
+    key-password: 123456
+    key-store-type: jks
+    key-alias: 1
 
 

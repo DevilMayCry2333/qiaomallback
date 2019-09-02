@@ -45,13 +45,23 @@ public class GoodsCtl {
 
     }
 
+
+    @RequestMapping("/goodsDetailByName")
+    public Object goodsDetailByName(@RequestParam("name") String name){
+        return goodsSer.goodsDetailByName(name);
+
+    }
+
     @RequestMapping("/AllGoods")
     public Object showAllGoods(){
-        JSONArray jsonArray = new JSONArray();
         ArrayList<pms_productEntity> pmsProductEntities = goodsSer.AllGoods();
-        jsonArray.add(pmsProductEntities);
+        List<pms_productEntity> leftList = pmsProductEntities.subList(0,pmsProductEntities.size()/2);
+        List<pms_productEntity> rightList = pmsProductEntities.subList(pmsProductEntities.size()/2,pmsProductEntities.size());
         jsonObject.put("Res",true);
+        jsonObject.put("leftList",leftList);
+        jsonObject.put("rightList",rightList);
         jsonObject.put("tableData",pmsProductEntities);
+
 
         return jsonObject;
 

@@ -91,7 +91,7 @@
     from oms_order
     <trim prefix="where" prefixOverrides="and | or">
       <if test="time != null and time != ''">
-        payment_time Like CONCAT('%',#{time},'%')
+        create_time Like CONCAT('%',#{time},'%')
       </if>
     </trim>
   </select>

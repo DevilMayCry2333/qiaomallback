@@ -27,6 +27,10 @@ public class GoodsSer {
         return productEntityMapper.selectByPrimaryKey(Long.parseLong(id));
     }
 
+    public pms_productEntity goodsDetailByName(String name){
+        return productEntityMapper.selectByName(name);
+    }
+
     public ArrayList<pms_productEntity> AllGoods(){
         return productEntityMapper.selectPmsProduct();
     }
