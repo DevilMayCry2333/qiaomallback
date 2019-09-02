@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
@@ -88,10 +90,37 @@ public class OrderCtl {
 
         oms_orderEntity omsOrderEntity = new oms_orderEntity();
         oms_order_itemEntity omsOrderItemEntity = new oms_order_itemEntity();
+        Long id = (long)(Math.random()*100000);
 
-        omsOrderEntity.setId((long) (Math.random()*100000));
+        omsOrderEntity.setId(id);
         omsOrderEntity.setTotalAmount(BigDecimal.valueOf(Long.parseLong(amount)*100));
-        omsOrderEntity.setCreateTime(new Date().toString());
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(new Date());
+
+        omsOrderEntity.setCreateTime(dateString);
+        omsOrderEntity.setDeleteStatus(0);
+        omsOrderEntity.setReceiverProvince(province);
+        omsOrderEntity.setReceiverCity(city);
+        omsOrderEntity.setReceiverRegion(county);
+        omsOrderEntity.setReceiverDetailAddress(detail);
+        omsOrderEntity.setReceiverPhone(tel);
+        omsOrderEntity.setTotalAmount(BigDecimal.valueOf(Integer.valueOf(amount)*100));
+        omsOrderEntity.setPaymentTime(new Date());
+        omsOrderEntity.setDeliveryTime(new Date());
+        omsOrderEntity.setReceiveTime(new Date());
+        omsOrderEntity.setCommentTime(new Date());
+        omsOrderEntity.setModifyTime(new Date());
+
+
+        omsOrderItemEntity.setId(Math.toIntExact(id));
+        omsOrderItemEntity.setOrderId(id);
+        omsOrderItemEntity.setProductName("衣服");
+        omsOrderItemEntity.setProductAttr("大小:" + size +",颜色:" + color);
+        omsOrderItemEntity.setProductQuantity(Integer.valueOf(amount));
+
+        omsOrderItemEntity.setProductPic("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567397649048&di=4933d7cedd59222011d2a73456c0de73&imgtype=0&src=http%3A%2F%2Fpic1.cxtuku.com%2F00%2F09%2F79%2Fb2949b414ece.jpg");
+
+        orderSer.insertOrder(omsOrderEntity,omsOrderItemEntity);
 
         jsonObject.put("Res",true);
         return jsonObject;
