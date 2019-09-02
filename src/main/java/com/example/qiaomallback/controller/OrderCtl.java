@@ -3,7 +3,6 @@ package com.example.qiaomallback.controller;
 import com.example.qiaomallback.entity.oms_orderEntity;
 import com.example.qiaomallback.entity.oms_order_itemEntity;
 import com.example.qiaomallback.service.OrderSer;
-import com.example.qiaomallback.util.MD5;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
